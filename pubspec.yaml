@@ -1,6 +1,5 @@
 name: telegram_demo
 description: A new Flutter project.
-
 version: 1.0.0+1
 
 environment:
@@ -21,11 +20,9 @@ dependencies:
   # bubble tab indicator
   bubble_tab_indicator: ^0.1.6
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 flutter:
 

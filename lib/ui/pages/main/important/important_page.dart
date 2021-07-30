@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:telegram_demo/core/constants/color.dart';
 import 'package:telegram_demo/core/constants/style.dart';
-import 'package:telegram_demo/models/message_model.dart';
-import 'package:telegram_demo/screen/chat_screen/chat_screen.dart';
+import 'package:telegram_demo/data/models/message_model.dart';
+import 'package:telegram_demo/ui/pages/chat/chat_page.dart';
 
 class ImportantPage extends StatelessWidget {
   const ImportantPage({Key? key}) : super(key: key);

@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:telegram_demo/core/constants/color.dart';
 import 'package:telegram_demo/core/constants/style.dart';
-import 'package:telegram_demo/models/message_model.dart';
-import 'package:telegram_demo/models/user_model.dart';
+import 'package:telegram_demo/data/models/message_model.dart';
+import 'package:telegram_demo/data/models/user_model.dart';
+
+import 'widgets/message_composer.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -16,99 +18,45 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   _buildMessage(Message message, bool isMe) {
-    return
-        Container(
-            margin: isMe
-                ? EdgeInsets.only(top: 10, bottom: 10, left: 80, right: 2)
-                : EdgeInsets.only(top: 10, bottom: 10, right: 80, left: 2),
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-            decoration: BoxDecoration(
-              color: isMe ? clrBlack4 : clrBlue,
-              borderRadius: isMe
-                  ? BorderRadius.only(
-                      topRight: Radius.circular(35),
-                      topLeft: Radius.circular(35),
-                      bottomRight: Radius.circular(10),
-                      bottomLeft: Radius.circular(35))
-                  : BorderRadius.only(
-                      topRight: Radius.circular(35),
-                      topLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(35),
-                      bottomLeft: Radius.circular(35)),
-            ),
-            child: isMe
-                ? Text(
-                    message.text!,
-                    style: TextStyle(
-                        color: clrBlack,
-                        fontSize: 16,
-                        fontFamily: gilroy,
-                        fontWeight: FontWeight.w500),
-
-                  )
-                : Text(
-                    message.text??"",
-                    style: TextStyle(
-                        color: clrWhite,
-                        fontSize: 16,
-                        fontFamily: gilroy,
-                        fontWeight: FontWeight.w500),
-                  ),
-
-    );
-  }
-
-  _buildMessageComposer(){
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0,vertical: 20.0),
-      margin: EdgeInsets.only(left: 5,right: 5),
-      height: 100,
-      width: double.infinity,
-      color: clrWhite,
-      child: Container(
-        margin: EdgeInsets.only(left: 5,right: 5),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          border:Border.all(
-            width: 1,
-            color: clrGrey
-          )
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-              style: TextStyle(fontFamily: gilroy, fontSize: 17,fontWeight: FontWeight.w500),
-              cursorColor: Colors.black,
-              decoration: InputDecoration.collapsed(
-                hintText: "Type your message...",
-              ),
-            ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  iconSize: 25,
-                  icon: Icon(Icons.add, color: clrBlue),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  iconSize: 25,
-                  icon: Icon(Icons.emoji_emotions_outlined, color: clrBlue),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  iconSize: 25,
-                  icon: Icon(Icons.video_call, color: clrBlue),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          ],
-        ),
+      margin: isMe
+          ? EdgeInsets.only(top: 10, bottom: 10, left: 80, right: 2)
+          : EdgeInsets.only(top: 10, bottom: 10, right: 80, left: 2),
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+      decoration: BoxDecoration(
+        color: isMe ? clrBlack4 : clrBlue,
+        borderRadius: isMe
+            ? BorderRadius.only(
+                topRight: Radius.circular(35),
+                topLeft: Radius.circular(35),
+                bottomRight: Radius.circular(10),
+                bottomLeft: Radius.circular(35))
+            : BorderRadius.only(
+                topRight: Radius.circular(35),
+                topLeft: Radius.circular(10),
+                bottomRight: Radius.circular(35),
+                bottomLeft: Radius.circular(35)),
       ),
+      child: isMe
+          ? Text(
+              message.text!,
+              style: TextStyle(
+                  color: clrBlack,
+                  fontSize: 16,
+                  fontFamily: gilroy,
+                  fontWeight: FontWeight.w500),
+            )
+          : Text(
+              message.text ?? "",
+              style: TextStyle(
+                  color: clrWhite,
+                  fontSize: 16,
+                  fontFamily: gilroy,
+                  fontWeight: FontWeight.w500),
+            ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -137,9 +85,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
+                          SizedBox(width: 10),
                           Container(
                             child: Column(
                               children: [
@@ -154,7 +100,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                   height: 5,
                                 ),
                                 Container(
-                                  child:  Text(
+                                  child: Text(
                                     "Online",
                                     style: TextStyle(
                                         color: clrBlue,
@@ -174,10 +120,9 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
-
-          iconTheme: new IconThemeData(
-              color: clrBlue,
-          ),
+        iconTheme: new IconThemeData(
+          color: clrBlue,
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -198,7 +143,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   topRight: Radius.circular(5),
                 ),
                 child: ListView.builder(
-                  shrinkWrap: true,
+                    shrinkWrap: true,
                     padding: EdgeInsets.only(top: 15),
                     itemCount: messages.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -209,7 +154,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
           ),
-          _buildMessageComposer(),
+          MessageComposer(),
         ],
       ),
     );
