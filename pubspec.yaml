@@ -11,9 +11,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   # get state manager
-  get: ^4.1.4
+  get: ^4.3.0
   # cache storage
-  shared_preferences: ^2.0.6
+  get_storage: ^2.0.3
   # connectivity
   connectivity: ^3.0.6
   # svg render
