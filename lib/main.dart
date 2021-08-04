@@ -5,7 +5,6 @@ import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:telegram_demo/ui/login/login_page.dart';
 import 'package:telegram_demo/ui/pages/main/main_page.dart';
-import 'package:telegram_demo/ui/pages/main/unread/unread_page.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();

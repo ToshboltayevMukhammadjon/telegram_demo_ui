@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class AppDrawer extends StatelessWidget {
+import '../../main.dart';
+
+class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
+
+  @override
+  _AppDrawerState createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  GoogleSignIn googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -205,6 +216,21 @@ class AppDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Container(
+                    child:  RaisedButton(
+                      child: Text("out"),
+                      onPressed: () async {
+                        await googleSignIn.signOut();
+                        SharedPreferences sharedPreferences =
+                        await SharedPreferences.getInstance();
+                        sharedPreferences.clear();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyApp()),
+                        );
+                      },
+                    ),
+                  )
                 ],
               )
             ],
@@ -214,3 +240,4 @@ class AppDrawer extends StatelessWidget {
     );
   }
 }
+
