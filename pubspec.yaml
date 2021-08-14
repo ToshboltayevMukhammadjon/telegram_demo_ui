@@ -1,6 +1,5 @@
 name: telegram_demo
 description: A new Flutter project.
-
 version: 1.0.0+1
 
 environment:
@@ -11,21 +10,25 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   # get state manager
-  get: ^4.1.4
+  get: ^4.3.0
   # cache storage
-  shared_preferences: ^2.0.6
+  get_storage: ^2.0.3
   # connectivity
   connectivity: ^3.0.6
   # svg render
   flutter_svg: ^0.22.0
   # bubble tab indicator
   bubble_tab_indicator: ^0.1.6
-
+  google_sign_in: ^5.0.7
+  cloud_firestore: ^2.4.0
+  firebase_auth: ^3.0.1
+  firebase_core: ^1.4.0
+  shared_preferences: ^2.0.6
+  flutter_statusbarcolor_ns: ^0.3.0-nullsafety
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 flutter:
 

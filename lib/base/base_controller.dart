@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:telegram_demo/core/constants/color.dart';
 
+export 'package:get/get.dart';
+
 abstract class BaseController extends GetxController {
-  RxBool isLoading = false.obs;
+  bool _isLoading = false;
   final Connectivity connectivity = Connectivity();
   ConnectivityResult connectivityResult = ConnectivityResult.none;
 
@@ -30,7 +32,8 @@ abstract class BaseController extends GetxController {
   }
 
   void setLoading(bool value) {
-    isLoading.value = value;
+    _isLoading = value;
+    update();
   }
 
   void showErrorMessage(String message) {
@@ -45,4 +48,6 @@ abstract class BaseController extends GetxController {
       colorText: clrWhite,
     );
   }
+
+  bool get isLoading => _isLoading;
 }

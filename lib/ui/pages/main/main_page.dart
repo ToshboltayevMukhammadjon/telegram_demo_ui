@@ -3,25 +3,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:telegram_demo/core/constants/color.dart';
 import 'package:telegram_demo/core/constants/style.dart';
-import 'package:telegram_demo/screen/components/drawer.dart';
-import 'package:telegram_demo/screen/pages/Important.dart';
-import 'package:telegram_demo/screen/pages/all.dart';
-import 'package:telegram_demo/screen/pages/read.dart';
-import 'package:telegram_demo/screen/pages/study.dart';
-import 'package:telegram_demo/screen/pages/unread.dart';
+import 'package:telegram_demo/ui/components/drawer.dart';
+import 'package:telegram_demo/ui/pages/main/important/important_page.dart';
+import 'package:telegram_demo/ui/pages/main/all/all_page.dart';
+import 'package:telegram_demo/ui/pages/main/read/read_page.dart';
+import 'package:telegram_demo/ui/pages/main/study/study_page.dart';
+import 'package:telegram_demo/ui/pages/main/unread/unread_page.dart';
 
-class HomePage extends StatefulWidget {
-  static final String id = "HomePage";
+class MainPage extends StatefulWidget {
+  static final String id = "MainPage";
 
-  const HomePage({
+  const MainPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
               indicator: BubbleTabIndicator(
                 indicatorHeight: 40.0,
                 indicatorColor: clrAssets,
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                 insets: EdgeInsets.zero,
                 tabBarIndicatorSize: TabBarIndicatorSize.tab,
                 indicatorRadius: 20,

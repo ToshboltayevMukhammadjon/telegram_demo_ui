@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-class UnreadPage extends StatelessWidget {
-  const UnreadPage({Key? key}) : super(key: key);
+
+class StudyPage extends StatelessWidget {
+  const StudyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Unread"),
+      child: Text("Study"),
     );
   }
 }
